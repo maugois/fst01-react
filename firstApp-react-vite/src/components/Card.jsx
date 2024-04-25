@@ -4,9 +4,9 @@ function Card (props) {
 
     return (
         <div className="card">
-            <h1>{props.name}</h1>
+            <h1>{props.userData.name}</h1>
 
-            <img src={props.imageUrl} alt="" />
+            <img src={props.userData.imageUrl} alt="" />
 
             <button type="button">
                 Seguir  

@@ -19,12 +19,14 @@ export default function App() {
     },
   ];
 
-  const user = users[0];
-
   return (
     <>  
       <div>
-        <Card name={user.name} imageUrl={user.imageUrl}/>
+      {
+        users.map((user) => (
+          <Card userData={user} />
+        ))
+      }
       </div>
     </>
   )
