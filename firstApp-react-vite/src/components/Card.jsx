@@ -8,9 +8,12 @@ function Card (props) {
 
             <img src={props.userData.imageUrl} alt="" />
 
-            <button type="button">
-                Seguir  
-            </button>
+            <div className="actions">
+                <button type="button">
+                    Seguir  
+                </button>
+            </div>
+
         </div>
     )
 }

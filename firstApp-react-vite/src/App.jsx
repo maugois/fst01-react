@@ -1,4 +1,5 @@
 import Card from "./components/Card";
+import './App.css';
 
 export default function App() {
   const users = [
@@ -21,10 +22,10 @@ export default function App() {
 
   return (
     <>  
-      <div>
+      <div className="list-users">
       {
         users.map((user) => (
-          <Card userData={user} />
+          <Card key={user.id} userData={user} />
         ))
       }
       </div>
