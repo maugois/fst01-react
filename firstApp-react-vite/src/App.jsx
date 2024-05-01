@@ -1,7 +1,12 @@
+import '@fontsource-variable/montserrat/wght-italic.css';
+import { ImCool2 } from "react-icons/im";
+import { useState } from "react";
 import Card from "./components/Card/Card";
 import './App.css';
 
 export default function App() {
+  const [countFollowers, setCountFollowers] = useState(0);
+
   const users = [
     {
       id: 1,
@@ -20,15 +25,27 @@ export default function App() {
     },
   ];
 
+  function handleChangeFollowers(value) {
+    setCountFollowers(value ? countFollowers + 1 : countFollowers - 1);
+  }
+
   return (
-    <>  
-      <div className="list-users">
-      {
-        users.map((user) => (
-          <Card key={user.id} userData={user} />
-        ))
-      }
-      </div>
+    <>
+      <div>
+        <h1 className="count-followers">
+          Seguidores: {countFollowers}
+
+          <span><ImCool2 /></span>
+        </h1>
+
+        <div className="list-users">
+        {
+          users.map((user) => (
+            <Card key={user.id} userData={user} changeCount={handleChangeFollowers}/>
+          ))
+        }
+        </div>
+      </div>  
     </>
   )
 }

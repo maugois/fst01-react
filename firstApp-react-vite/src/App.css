@@ -1,3 +1,7 @@
+body {
+    font-family: 'Montserrat Variable', sans-serif;
+}
+
 .list-users {
     display: flex;
     margin-top: 20px;
