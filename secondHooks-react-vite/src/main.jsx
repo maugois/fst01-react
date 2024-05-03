@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import UseState from './hooks/UseState'
+import UseStateComponent from './hooks/UseStateComponent'
+import UseEffectComponent from './hooks/UseEffectComponent'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <UseState />
+    <UseStateComponent />
+    <hr />
+    <UseEffectComponent />
   </React.StrictMode>,
 )
