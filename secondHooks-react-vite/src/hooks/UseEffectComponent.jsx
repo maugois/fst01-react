@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const UseEffectComponent = () => {
 
     const [category, setCategory] = useState('');
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         console.log('useEffect');
@@ -17,9 +18,9 @@ const UseEffectComponent = () => {
     }, [category])
 
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/${category}`)
+        fetch(`https://jsonplaceholder.typicode.com//${category}`)
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => setData(json))
     }, [category])
 
     return (
@@ -33,6 +34,16 @@ const UseEffectComponent = () => {
                    <button onClick={() => setCategory('posts')}>Posts</button>
                    <button onClick={() => setCategory('comments')}>Comments</button>
                    <button onClick={() => setCategory('todos')}>All</button>
+               </div>
+
+               <div>
+                    {data.map(param => {
+                        <ul>
+                            <li key={param.id}>{param.name}</li>
+                            <li key={param.id}>{param.body}</li>
+                            <li key={param.id}>{param.userId}</li>
+                        </ul>
+                    })}
                </div>
             </div>
         </>
