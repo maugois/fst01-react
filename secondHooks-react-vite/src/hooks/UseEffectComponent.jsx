@@ -5,22 +5,23 @@ const UseEffectComponent = () => {
     const [category, setCategory] = useState('');
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        console.log('useEffect');
-    })
+    // useEffect(() => {
+    //     console.log('useEffect');
+    // })
 
-    useEffect(() => {
-        console.log('useEffect');
-    }, [])
+    // useEffect(() => {
+    //     console.log('useEffect');
+    // }, [])
 
-    useEffect(() => {
-        console.log('useEffect');
-    }, [category])
+    // useEffect(() => {
+    //     console.log('useEffect');
+    // }, [category])
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com//${category}`)
         .then(response => response.json())
         .then(json => setData(json))
+        .catch(error => console.log("Error:", error))
     }, [category])
 
     return (
@@ -36,15 +37,29 @@ const UseEffectComponent = () => {
                    <button onClick={() => setCategory('todos')}>All</button>
                </div>
 
-               <div>
+               <h2>{data.length} items</h2>
+
+                {/* condição && execução */}
+                <ul>
+                    {data.map(param => (
+                        <li key={param.id}>
+                            <p>Id: {param.id}</p>
+                            <p>Title: {param.title ? param.title : param.name}</p>
+                        </li>
+                    ))}
+                </ul>
+
+                {/* 
+                <ul>
                     {data.map(param => {
-                        <ul>
-                            <li key={param.id}>{param.name}</li>
-                            <li key={param.id}>{param.body}</li>
-                            <li key={param.id}>{param.userId}</li>
-                        </ul>
-                    })}
-               </div>
+                        return (
+                            <li key={param.id}>
+                                <p>Id: {param.id}</p>
+                            </li>
+                        )
+                    })} 
+                </ul>
+                */}
             </div>
         </>
     )
